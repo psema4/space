@@ -8,8 +8,8 @@ if ( typeof game === 'undefined' ) {
 
    var backgroundState, myGame, p;
 
-   var SCREEN_WIDTH = 520;
-   var SCREEN_HEIGHT = 200;
+   var SCREEN_WIDTH = 1024;
+   var SCREEN_HEIGHT = 421;
 
    var HUD_HEIGHT = 0;
     
@@ -176,9 +176,8 @@ if ( typeof game === 'undefined' ) {
         for ( var i = 0; i < this.config.asteroidsNumber; i++ ) {
             var width = Math.random() * (this.config.asteroidMaxSize - 
                     this.config.asteroidMinSize) + this.config.asteroidMinSize;
-            var a = this.paper.circle((Math.random()*0.5+1)*SCREEN_WIDTH,
-                Math.random() * SCREEN_HEIGHT, width);
-            a.attr({'stroke': '#ffa', 'fill': '#333'});
+            var sz = Math.random() * (SCREEN_WIDTH/10);
+            var a = this.paper.image("asteroid.gif",(Math.random()*0.5+1)*SCREEN_WIDTH,Math.random() * SCREEN_HEIGHT, sz, sz);
             a.hide();
             this.asteroids.push({handle:a, 
                 speed:-(this.config.asteroidMaxSpeed - 
@@ -389,14 +388,14 @@ if ( typeof game === 'undefined' ) {
 
         this.spaceship.push( 
             paper.circle(14,3,0),
-            paper.path('M 0 0 L 9 3 M 0 6 L 9 3 M 0 0 L 0 6 Z'),
+            paper.image("enterprise.gif",0,0,59,19),
             paper.circle(9,3,0),
             paper.circle(0,0,0),
             paper.circle(0,6,0)
         );
         this.spaceship.translate(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
-        this.spaceship.attr({'fill': '#333', 'stroke': '#fff'});
+        this.spaceship.attr({'fill': '#f00', 'stroke': '#f00'});
 
     };
     
